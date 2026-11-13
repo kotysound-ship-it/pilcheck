@@ -2,5 +2,10 @@
   "name": "pilcheck",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test test/engine.test.ts" }
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test test/engine.test.ts",
+    "fetch:standards": "node --env-file=.env.local scripts/fetch-foodsafety.ts I2710",
+    "fetch:individual": "node --env-file=.env.local scripts/fetch-foodsafety.ts I-0050"
+  }
 }
