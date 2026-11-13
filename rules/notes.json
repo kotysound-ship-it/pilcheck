@@ -1,0 +1,8 @@
+{
+  "_about": "판정과 분리해 '알아두면 좋은 점'으로만 보여주는 참고 정보. 식약처 고시에 없는 기준이라 신호등 판정에 반영하지 않는다. 출처: 작업판 c1.",
+  "checkedAt": "2026-11-13",
+  "notes": [
+    {"id": "mg-oxide", "ingredient": "마그네슘", "when": {"formIncludes": "산화마그네슘"}, "text": "산화마그네슘은 다른 형태의 마그네슘보다 흡수율이 낮다고 알려져 있습니다.", "source": "Koty 검수 기준 (c1)"},
+    {"id": "k-high", "ingredient": "칼륨", "when": {"perUnitOver": 99, "unit": "mg"}, "text": "1정에 칼륨 99mg을 넘는 고함량 제품은 섭취에 주의가 필요할 수 있습니다.", "source": "Koty 검수 기준 (c1)"}
+  ]
+}

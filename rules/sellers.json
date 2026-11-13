@@ -1,0 +1,46 @@
+{
+  "_about": "판매처 3단계 분류 규칙. 출처: 작업판 r1(공식·공인 유통 정의), r2(리셀러 신호), r3(주의 문구). 신호 세기는 Claude 초안이며 Koty 확인 대상.",
+  "checkedAt": "2026-11-13",
+  "warningText": "*정식 판매처의 상품이 아닐 수 있습니다.",
+  "tiers": {
+    "official": "공식 판매처",
+    "authorized": "공인 유통 판매처",
+    "general": "일반 판매처",
+    "check": "확인 필요"
+  },
+  "officialWhen": [
+    "판매자 상호가 판매원 또는 제조사와 일치",
+    "플랫폼 공식 인증(브랜드스토어·공식 스토어 표시)",
+    "브랜드가 공개한 공식 판매처 목록에 있음"
+  ],
+  "authorizedWhen": [
+    "대형 유통사 직매입(쿠팡 로켓배송 등)",
+    "대형 온라인몰 직영관"
+  ],
+  "decision": {
+    "strongAtLeast": 1,
+    "mediumAtLeast": 2,
+    "weakCounts": false,
+    "discountMedium": 0.15,
+    "_note": "강함 1개 이상 또는 중간 2개 이상이면 '확인 필요'. 약함 신호는 단독으로 쓰지 않는다. 할인율은 공식 판매처 1일분 가격 대비 15% 이상 저렴할 때 중간 신호(Koty r2: 15~20%)."
+  },
+  "signals": [
+    {"id": "noDetail", "label": "제품명만 있고 상세 정보가 없음", "strength": "strong"},
+    {"id": "noNutritionTable", "label": "영양·기능정보(함량표) 누락", "strength": "strong"},
+    {"id": "noSalesRegistration", "label": "건강기능식품 판매업 신고가 확인되지 않음", "strength": "strong"},
+    {"id": "importNoKoreanLabel", "label": "수입품인데 한글 표시사항이 보이지 않음", "strength": "strong"},
+    {"id": "subdivided", "label": "소분·낱개 판매", "strength": "strong"},
+    {"id": "parallelImport", "label": "병행수입·해외직구·구매대행 표기", "strength": "strong"},
+    {"id": "noHealthMark", "label": "건강기능식품 문구·인증마크 누락", "strength": "medium"},
+    {"id": "noticeEmpty", "label": "상품정보제공고시가 비어 있거나 기준 상품과 다름", "strength": "medium"},
+    {"id": "expiryEmphasis", "label": "소비기한 임박 강조", "strength": "medium"},
+    {"id": "unofficialBundle", "label": "브랜드가 내지 않은 묶음 구성(3+1 등)", "strength": "medium"},
+    {"id": "mixedSet", "label": "다른 제품과 섞은 세트", "strength": "medium"},
+    {"id": "returnAddressMismatch", "label": "반품·교환 주소가 판매원과 다름", "strength": "medium"},
+    {"id": "overseasShipping", "label": "해외 배송 또는 배송 7일 이상", "strength": "medium"},
+    {"id": "deepDiscount", "label": "공식 판매처 1일분 가격보다 크게 저렴함", "strength": "medium"},
+    {"id": "watermark", "label": "다른 쇼핑몰 워터마크", "strength": "weak"},
+    {"id": "lowResImages", "label": "해상도가 낮은 복제 이미지", "strength": "weak"},
+    {"id": "newSeller", "label": "판매자 이력이 짧거나 리뷰가 적음", "strength": "weak"}
+  ]
+}

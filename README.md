@@ -1,2 +1,33 @@
-# pilcheck
-health supplement identification app
+# pilcheck (필체크)
+
+health supplement identification app — 영양제 판독기
+
+## 판정 엔진
+
+영양제 판매 페이지에서 추출한 값을 규칙과 비교해 4개 항목(제품 구분, 광고 문구, 함량 충족, 1일 가격)과 판매처 단계를 판정합니다.
+
+## 구조
+
+| 경로 | 내용 | 출처 |
+| --- | --- | --- |
+| `src/engine.ts` | 판정 엔진. 외부 호출·시간·난수를 쓰지 않아 같은 입력이면 같은 결과 | 프로젝트 지침 5장 |
+| `rules/expressions.json` | 금지 표현·흔한 함정 정규식 | 작업판 c1, c4, c5 |
+| `rules/sellers.json` | 판매처 3단계 분류, 리셀러 신호와 세기, 주의 문구 | 작업판 r1, r2, r3 |
+| `rules/notes.json` | 판정과 분리한 참고 정보(마그네슘 형태, 칼륨 1정 함량) | 작업판 c1 |
+| `rules/standards.json` | 기능성별 1일 섭취량 기준값. 식품안전나라 I2710·I-0050 동기화로 채움(현재 비어 있음) | 작업판 c2 |
+| `test/engine.test.ts` | 가상 제품·테스트 전용 기준값으로 만든 동작 확인 12건 | |
+
+## 실행
+
+```bash
+npm test
+```
+
+Node 22.18 이상이면 별도 설치 없이 TypeScript를 바로 실행합니다.
+
+## 다음 단계
+
+1. 식품안전나라 I2710 동기화 스크립트 → `rules/standards.json` 채우기
+2. 판매 페이지 추출기(네이버 스마트스토어·브랜드 공식몰), 쿠팡은 캡처 업로드 + 구글시트
+3. 네이버 쇼핑 API로 정식 판매처·최저가 탐색
+4. Next.js 결과 화면

@@ -1,0 +1,21 @@
+{
+  "_about": "광고 문구 판정 규칙. 출처: 작업판 c4(금지 표현), c5(흔한 함정), c1(카테고리 메모). 정규식은 상세페이지에서 추출한 문구 전체에 적용한다. level: 금지 = 판정 '주의'의 근거, 참고 = 판정에 넣지 않고 참고 정보로만 표시.",
+  "checkedAt": "2026-11-13",
+  "rules": [
+    {"id": "disease-name", "group": "질병 예방·치료 오인", "level": "금지", "pattern": "(당뇨|고혈압|치매|관절염|아토피|여드름|고지혈증|동맥경화|골관절|암\\s?(예방|치료|세포)|항암)", "explain": "특정 질병명을 언급하는 표현", "source": "Koty c4-1"},
+    {"id": "disease-verb", "group": "질병 예방·치료 오인", "level": "금지", "pattern": "(치료|예방|완치|통증\\s?(싹|제거|사라)|염증\\s?(제거|싹|잡))", "explain": "치료·예방 효능을 암시하는 표현", "source": "Koty c4-1 ('억제'는 유산균 인정 기능성 '유해균 억제'와 겹쳐 제외 — Koty 확인 필요)"},
+    {"id": "body-direct", "group": "질병 예방·치료 오인", "level": "금지", "pattern": "(혈당을?\\s?(뚝|낮춰|떨어)|관절\\s?통증을?\\s?줄|피부\\s?질환\\s?완화)", "explain": "부위·증상을 직접 연결해 효과를 말하는 표현", "source": "Koty c4-1"},
+    {"id": "drug-like", "group": "의약품 오인", "level": "금지", "pattern": "(처방|의약품|약처럼|약보다|약\\s?대신|약을?\\s?끊|약국에서\\s?파는\\s?것보다|디톡스|해독|독소\\s?(를\\s?)?배출|천연\\s?소염제|천연\\s?인슐린|림프\\s?순환|혈전을?\\s?녹)", "explain": "의약품으로 오인하게 하는 표현", "source": "Koty c4-2"},
+    {"id": "absolute", "group": "기만·과장", "level": "금지", "pattern": "(최고의|최초|국내\\s?1위|국내\\s?유일|완벽한|부작용\\s?0|100%\\s?(안전|효과))", "explain": "근거 없는 최상급·절대 표현", "source": "Koty c4-3"},
+    {"id": "instant", "group": "기만·과장", "level": "금지", "pattern": "(즉효|섭취\\s?즉시|즉각\\s?반응|획기적|단\\s?\\d+\\s?일\\s?만에)", "explain": "즉각적인 효과를 암시하는 표현", "source": "Koty c4-3"},
+    {"id": "testimonial", "group": "체험기 활용", "level": "금지", "pattern": "(먹고\\s?.{0,10}(끊었|사라졌|나았)|거짓말처럼\\s?사라)", "explain": "체험기로 효능을 강조하는 표현", "source": "Koty c4-4"},
+    {"id": "over-claim-eye", "group": "인정 기능성 범위 밖", "level": "금지", "pattern": "(시력\\s?회복|안구건조증\\s?(완화|개선|치료))", "explain": "눈 건강 원료의 인정 범위를 넘는 표현", "source": "Koty c4-5"},
+    {"id": "over-claim-fat", "group": "인정 기능성 범위 밖", "level": "금지", "pattern": "(하체\\s?비만\\s?탈출|뱃살\\s?싹)", "explain": "체지방 원료의 인정 범위를 넘는 표현", "source": "Koty c4-5"},
+    {"id": "over-claim-vessel", "group": "인정 기능성 범위 밖", "level": "금지", "pattern": "(혈관\\s?청소|혈관을\\s?깨끗|콜레스테롤\\s?제거)", "explain": "혈행·혈중 지질 원료의 인정 범위를 넘는 표현", "source": "Claude 초안 — Koty 확인 필요"},
+    {"id": "all-in-one", "group": "기만·과장", "level": "금지", "pattern": "(이거\\s?하나로|하나면\\s?충분|하루\\s?한\\s?알로\\s?모든|모든\\s?영양(소|을)\\s?(다|한번에))", "explain": "한 제품으로 모든 영양이 충족된다는 표현", "source": "Koty c1(종합비타민)"},
+    {"id": "raw-material-only", "group": "흔한 함정", "level": "참고", "pattern": "원료적\\s?특성에\\s?한함", "explain": "상단의 효능 설명이 이 제품이 아닌 원료 일반의 연구일 수 있습니다", "source": "Koty c5-3"},
+    {"id": "concentration", "group": "흔한 함정", "level": "참고", "pattern": "(고농축|\\d+\\s?배\\s?(농축|추출)|\\d+%\\s?(농축|추출물)|100%\\s?원액)", "explain": "농축·추출 비율은 기능성분 함량이 그만큼 높다는 뜻이 아닙니다", "source": "Koty c5-4"},
+    {"id": "authority", "group": "흔한 함정", "level": "참고", "pattern": "(특허|연구진\\s?(공동)?\\s?개발|의대|전문의\\s?(개발|추천)|자체\\s?연구소)", "explain": "특허·연구진 표기는 효능 인정과 별개일 수 있습니다", "source": "Koty c5-6"},
+    {"id": "generation", "group": "흔한 함정", "level": "참고", "pattern": "\\d\\s?세대\\s?(오메가|알티지|rTG)", "explain": "'n세대'는 식약처 기준의 구분이 아닌 마케팅 표현입니다", "source": "Koty c1(오메가3)"}
+  ]
+}
